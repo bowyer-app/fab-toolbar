@@ -7,6 +7,17 @@ Provides the Floating Action Button Toolbar [as specified in the Material Design
 
 Usage
 ====
+### build.gradle
+
+```
+repositories {
+    maven { url 'http://bowyer-app.github.io/AndroidRepositories/repository/releases' }
+}
+
+dependencies {
+    compile 'com.bowyer.app:fabtoolbar:1.0.0@jar'
+}
+```
 
 ### Layout XML
 
