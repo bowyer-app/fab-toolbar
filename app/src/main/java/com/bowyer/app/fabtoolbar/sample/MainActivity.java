@@ -5,10 +5,15 @@ import com.github.ksoichiro.android.observablescrollview.ObservableListView;
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
 import com.github.ksoichiro.android.observablescrollview.ScrollState;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +31,13 @@ public class MainActivity extends ActionBarActivity implements ObservableScrollV
     FabToolbar mFabToolbar;
     @InjectView(R.id.fab)
     FloatingActionButton mFab;
+
+    @InjectView(R.id.ic_call)
+    ImageView mIcCall;
+    @InjectView(R.id.ic_email)
+    ImageView mIcEmail;
+    @InjectView(R.id.ic_forum)
+    ImageView mIcForum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,4 +83,28 @@ public class MainActivity extends ActionBarActivity implements ObservableScrollV
     void onFabClick() {
         mFabToolbar.expandFab();
     }
+
+    @OnClick(R.id.call)
+    void onClickCall() {
+        iconAnim(mIcCall);
+    }
+
+    @OnClick(R.id.ic_email)
+    void onClickEmail() {
+        iconAnim(mIcEmail);
+    }
+
+    @OnClick(R.id.ic_forum)
+    void onClickForum() {
+        iconAnim(mIcForum);
+    }
+
+    private void iconAnim(View icon) {
+        Animator iconAnim = ObjectAnimator.ofPropertyValuesHolder(
+                icon,
+                PropertyValuesHolder.ofFloat("scaleX", 1f, 1.5f, 1f),
+                PropertyValuesHolder.ofFloat("scaleY", 1f, 1.5f, 1f));
+        iconAnim.start();
+    }
+
 }

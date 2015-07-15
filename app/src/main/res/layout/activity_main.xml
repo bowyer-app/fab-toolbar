@@ -30,5 +30,58 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             app:tb_container_gravity="center"
-            app:tb_color="@color/primary"/>
+            app:tb_color="@color/primary">
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+            <RelativeLayout
+                    android:id="@+id/call"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                <ImageView
+                        android:id="@+id/ic_call"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_call_white_36dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/email"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                <ImageView
+                        android:id="@+id/ic_email"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_email_white_36dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/forum"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                <ImageView
+                        android:id="@+id/ic_forum"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_forum_white_36dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </com.bowyer.app.fabtoolbar.FabToolbar>
 </FrameLayout>
