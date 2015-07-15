@@ -1,16 +1,35 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context=".MainActivity">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".MainActivity">
 
-    <TextView
-            android:text="@string/hello_world"
+    <com.github.ksoichiro.android.observablescrollview.ObservableListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="32dp"
+            android:layout_marginRight="32dp"
+            android:src="@drawable/ic_add_white_24dp"
+            app:borderWidth="0dp"
+            app:fabSize="normal"
+            app:rippleColor="@color/primary"
+            />
 
-</RelativeLayout>
+    <com.bowyer.app.fabtoolbar.FabToolbar
+            android:id="@+id/fabtoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:tb_button_gravity="end"
+            app:tb_container_gravity="center"
+            app:tb_color="@color/blue"/>
+</FrameLayout>
