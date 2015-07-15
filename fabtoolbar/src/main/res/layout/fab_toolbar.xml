@@ -11,7 +11,7 @@
             android:layout_height="@dimen/toolbar_height"
             android:orientation="horizontal"
             android:gravity="center"
-            android:visibility="gone"
+            android:visibility="invisible"
             android:elevation="@dimen/elevation"
             />
 

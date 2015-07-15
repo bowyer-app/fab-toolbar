@@ -31,5 +31,5 @@
             android:layout_gravity="bottom"
             app:tb_button_gravity="end"
             app:tb_container_gravity="center"
-            app:tb_color="@color/blue"/>
+            app:tb_color="@color/primary"/>
 </FrameLayout>

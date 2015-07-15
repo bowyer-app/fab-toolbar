@@ -1,13 +1,13 @@
 package com.bowyer.app.fabtoolbar.sample;
 
+import com.bowyer.app.fabtoolbar.FabToolbar;
 import com.github.ksoichiro.android.observablescrollview.ObservableListView;
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
 import com.github.ksoichiro.android.observablescrollview.ScrollState;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBarActivity;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
@@ -15,12 +15,17 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 
 public class MainActivity extends ActionBarActivity implements ObservableScrollViewCallbacks {
 
     @InjectView(R.id.list_view)
     ObservableListView mObservableListView;
+    @InjectView(R.id.fabtoolbar)
+    FabToolbar mFabToolbar;
+    @InjectView(R.id.fab)
+    FloatingActionButton mFab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,7 @@ public class MainActivity extends ActionBarActivity implements ObservableScrollV
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
         initListView();
+        mFabToolbar.setFab(mFab);
     }
 
     private void initListView() {
@@ -54,6 +60,15 @@ public class MainActivity extends ActionBarActivity implements ObservableScrollV
 
     @Override
     public void onUpOrCancelMotionEvent(ScrollState scrollState) {
+        if (scrollState == ScrollState.UP) {
+            mFabToolbar.slideOutFab();
+        } else if (scrollState == ScrollState.DOWN) {
+            mFabToolbar.slideInFab();
+        }
+    }
 
+    @OnClick(R.id.fab)
+    void onFabClick() {
+        mFabToolbar.expandFab();
     }
 }
