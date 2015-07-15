@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.bowyer.app:fabtoolbar:1.0.0@jar'
+    compile 'com.bowyer.app:fabtoolbar:1.0.0@aar'
 }
 ```
 
