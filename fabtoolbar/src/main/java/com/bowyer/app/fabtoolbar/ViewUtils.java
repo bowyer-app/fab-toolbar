@@ -7,6 +7,7 @@ import android.view.View;
  * Created by Bowyer on 2015/07/15.
  */
 public class ViewUtils {
+
     public static boolean setVisibility(View v, boolean visible) {
         int visibility;
         if (visible) {
