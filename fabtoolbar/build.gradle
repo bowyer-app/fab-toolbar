@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+def ARTIFACT_ID = "fab-toolbar"
 
 android {
     compileSdkVersion 22
@@ -8,7 +11,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
-        versionName "1.0"
+        versionName sdkVersion
     }
     buildTypes {
         release {
@@ -21,4 +24,42 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.0'
+}
+
+uploadArchives.repositories {
+    mavenDeployer {
+        repository(url: mavenRepositoryUrlRelease) {
+            authentication(userName: mavenRepositoryUserName, password: mavenRepositoryPass)
+        }
+        snapshotRepository(url: mavenRepositoryUrlSnapshot) {
+            authentication(userName: mavenRepositoryUserName, password: mavenRepositoryPass)
+        }
+        pom.project {
+            name ARTIFACT_ID
+        }
+    }
+
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.sourceFiles
+}
+
+task jar(type: Jar) {
+    from(zipTree('build/intermediates/bundles/release/classes.jar'))
+}
+artifacts {
+    archives androidSourcesJar
+    archives jar
 }

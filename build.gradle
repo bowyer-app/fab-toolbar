@@ -16,4 +16,14 @@ allprojects {
     repositories {
         jcenter()
     }
+    group = 'com.bowyer.app'
+    version = sdkVersion
+}
+apply plugin: 'maven'
+ext {
+    mavenRepositoryUrl = "file://${projectDir}/repository/"
+    mavenRepositoryUserName = ''
+    mavenRepositoryPass = ''
+    mavenRepositoryUrlRelease = "${mavenRepositoryUrl}releases/"
+    mavenRepositoryUrlSnapshot = "${mavenRepositoryUrl}snapshots/"
 }
