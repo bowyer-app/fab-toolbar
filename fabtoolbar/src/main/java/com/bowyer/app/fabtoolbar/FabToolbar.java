@@ -6,6 +6,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.annotation.IntDef;
@@ -13,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -30,7 +32,9 @@ import android.widget.LinearLayout;
 public class FabToolbar extends FrameLayout {
 
     private static final int DEFAULT_ANIMATION_DURATION = 600;
-    private int animationDuration = DEFAULT_ANIMATION_DURATION;
+
+    @SuppressWarnings("unused")
+    private int animationDuration = DEFAULT_ANIMATION_DURATION;//use feature
 
     private ImageView mFab;
 
@@ -55,13 +59,13 @@ public class FabToolbar extends FrameLayout {
     public FabToolbar(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
-        loadAttributes(attrs);
+        loadAttributes(context, attrs);
     }
 
     public FabToolbar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
-        loadAttributes(attrs);
+        loadAttributes(context, attrs);
     }
 
     private void init() {
@@ -69,7 +73,13 @@ public class FabToolbar extends FrameLayout {
         mFabExpandLayout = ((LinearLayout) findViewById(R.id.container));
     }
 
-    private void loadAttributes(AttributeSet attrs) {
+    private void loadAttributes(Context context, AttributeSet attrs) {
+        TypedValue outValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+
+        // use ?attr/colorPrimary as background color
+        theme.resolveAttribute(R.attr.colorPrimary, outValue, true);
+
         TypedArray a = getContext().getTheme().obtainStyledAttributes(
                 attrs,
                 R.styleable.FabToolbar,
@@ -78,7 +88,7 @@ public class FabToolbar extends FrameLayout {
         int containerGravity;
         try {
             setColor(a.getColor(R.styleable.FabToolbar_tb_color,
-                    getResources().getColor(R.color.blue)));
+                    outValue.data));
             animationDuration = a.getInteger(R.styleable.FabToolbar_tb_anim_duration,
                     DEFAULT_ANIMATION_DURATION);
             containerGravity = a.getInteger(R.styleable.FabToolbar_tb_container_gravity, 1);
@@ -368,7 +378,7 @@ public class FabToolbar extends FrameLayout {
         slideFadeOutAnim.setDuration(50);
 
         float dx = ViewUtils.centerX(mFabExpandLayout) + mFab.getWidth() - ViewUtils.centerX(mFab);
-        float dy = ViewUtils.centerY(mFabExpandLayout) ;
+        float dy = ViewUtils.centerY(mFabExpandLayout);
 
         mFab.setTranslationX(dx);
         mFab.setTranslationY(dy);
