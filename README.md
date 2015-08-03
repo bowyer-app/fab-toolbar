@@ -89,6 +89,10 @@ mFabToolbar.slideOutFab();
 mFabToolbar.slideInFab();
 ```
 
+Feature
+====
+- [ ] Android 5.0 lower animation support
+
 License
 --------
 
