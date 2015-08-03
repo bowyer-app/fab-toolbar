@@ -64,7 +64,7 @@ dependencies {
 
 ### Set up
 
-```
+```java
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +78,7 @@ dependencies {
 
 ### Show Hide
 
-```
+```java
 //expand FabToolbar
 mFabToolbar.expandFab();
 
@@ -95,7 +95,8 @@ Feature
 
 License
 --------
-
+```
 Copyright (c) 2015 Bowyer
 Released under the MIT license
 http://opensource.org/licenses/mit-license.php
+```
