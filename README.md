@@ -11,11 +11,11 @@ Usage
 
 ```
 repositories {
-    maven { url 'http://bowyer-app.github.io/AndroidRepositories/repository/releases' }
+    jcenter()
 }
 
 dependencies {
-    compile 'com.bowyer.app:fabtoolbar:1.0.0@aar'
+    compile 'com.bowyer.app:fab-toolbar:1.0.0@aar'
 }
 ```
 
