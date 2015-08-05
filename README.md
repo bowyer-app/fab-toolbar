@@ -1,5 +1,6 @@
 Floating Action Button Toolbar
 ==============================
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-fab--toolbar-green.svg?style=flat)](https://android-arsenal.com/details/1/2241)
 
 Provides the Floating Action Button Toolbar [as specified in the Material Design Guide](http://www.google.com/design/spec/components/buttons-floating-action-button.html#buttons-floating-action-button-transitions) in a simple library.
 
