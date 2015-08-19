@@ -349,6 +349,9 @@ public class FabToolbar extends FrameLayout {
     }
 
     public void contractFab() {
+        if(!isExpandFab()){
+            return;
+        }
         //Lollipop以外は一旦アニメーション無視
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             hideFab();
