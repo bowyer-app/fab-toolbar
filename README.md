@@ -4,7 +4,7 @@ Floating Action Button Toolbar
 
 Provides the Floating Action Button Toolbar [as specified in the Material Design Guide](http://www.google.com/design/spec/components/buttons-floating-action-button.html#buttons-floating-action-button-transitions) in a simple library.
 
-![demo](https://github.com/bowyer-app/fab-toolbar/blob/master/art/demo.gif)
+![demo](https://github.com/SikoraMichal/fab-toolbar/blob/animation-improvement/art/demo.gif)
 
 Usage
 ====
@@ -23,45 +23,46 @@ dependencies {
 ### Layout XML
 
 ```
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".MainActivity">
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
     <com.github.ksoichiro.android.observablescrollview.ObservableListView
-            android:id="@+id/list_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="32dp"
-            android:layout_marginRight="32dp"
-            android:src="@drawable/ic_add_white_24dp"
-            app:borderWidth="0dp"
-            app:fabSize="normal"
-            app:rippleColor="@color/primary"
-            />
+        android:id="@+id/fab"
+        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_fab_icon"/>
 
     <com.bowyer.app.fabtoolbar.FabToolbar
-            android:id="@+id/fabtoolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:tb_container_gravity="center"
-            app:tb_color="@color/primary">
-            
-        <!--add your original layout-->
-    </com.bowyer.app.fabtoolbar.FabToolbar>
-</FrameLayout>
+        android:id="@+id/fabtoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:tb_color="@color/primary"
+        app:tb_container_gravity="center"
+        app:tb_anim_duration="400"
+        app:tb_fab_type="normal">
 
+        <!--add your original layout-->
+
+    </com.bowyer.app.fabtoolbar.FabToolbar>
+
+</android.support.design.widget.CoordinatorLayout>
 ```
+
+Make sure to user CoordinatorLayout as your container for the Floating Action Button if you want to
+preserve same margin values for both Lollipop and pre Lollipop devices.
 
 ### Set up
 
@@ -70,7 +71,7 @@ dependencies {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         initListView();
         //set floating button to FabToolbar
         mFabToolbar.setFab(mFab);
@@ -88,11 +89,19 @@ mFabToolbar.slideOutFab();
 
 //fab slide in
 mFabToolbar.slideInFab();
+
+
 ```
+
+# Credits
+This library use following libraries.
+* [CircularReveal](https://github.com/ozodrukh/CircularReveal)
+* [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)
+
 
 Feature
 ====
-- [ ] Android 5.0 lower animation support
+- [x] Android 5.0 lower animation support
 
 License
 --------
