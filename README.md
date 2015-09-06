@@ -96,8 +96,6 @@ mFabToolbar.slideInFab();
 # Credits
 This library use following libraries.
 * [CircularReveal](https://github.com/ozodrukh/CircularReveal)
-* [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)
-
 
 Feature
 ====
