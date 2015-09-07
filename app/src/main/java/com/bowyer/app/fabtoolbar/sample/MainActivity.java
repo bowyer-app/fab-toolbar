@@ -10,7 +10,8 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -18,32 +19,32 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 
 
-public class MainActivity extends ActionBarActivity implements ObservableScrollViewCallbacks {
+public class MainActivity extends AppCompatActivity implements ObservableScrollViewCallbacks {
 
-    @InjectView(R.id.list_view)
+    @Bind(R.id.list_view)
     ObservableListView mObservableListView;
-    @InjectView(R.id.fabtoolbar)
+    @Bind(R.id.fabtoolbar)
     FabToolbar mFabToolbar;
-    @InjectView(R.id.fab)
+    @Bind(R.id.fab)
     FloatingActionButton mFab;
 
-    @InjectView(R.id.ic_call)
+    @Bind(R.id.ic_call)
     ImageView mIcCall;
-    @InjectView(R.id.ic_email)
+    @Bind(R.id.ic_email)
     ImageView mIcEmail;
-    @InjectView(R.id.ic_forum)
+    @Bind(R.id.ic_forum)
     ImageView mIcForum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         initListView();
         mFabToolbar.setFab(mFab);
     }
@@ -72,6 +73,7 @@ public class MainActivity extends ActionBarActivity implements ObservableScrollV
 
     @Override
     public void onUpOrCancelMotionEvent(ScrollState scrollState) {
+        Log.d("","Scroll scroll scroll");
         if (scrollState == ScrollState.UP) {
             mFabToolbar.slideOutFab();
         } else if (scrollState == ScrollState.DOWN) {

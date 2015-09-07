@@ -7,4 +7,8 @@
         <item name="colorAccent">@color/primary</item>
         <item name="android:windowBackground">@color/window_background</item>
     </style>
+
+    <style name="floating_action_button">
+        <item name="android:layout_margin">16dp</item>
+    </style>
 </resources>
